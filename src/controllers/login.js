@@ -11,6 +11,7 @@ async function login(req, res) {
         //     expiresIn: expirationTime
         // };
 
+        // Here is a simpliler line that sets the options for the token, including expiration time 
         const options = {
             expiresIn: '7d' // 7 days
         };

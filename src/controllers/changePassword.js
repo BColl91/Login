@@ -1,10 +1,10 @@
-// Import the User model from the database models
+// User model is imported from the database models
 const User = require("../db/models/users");
 
-// Import bcrypt, a library used for hashing passwords
+// Importing bcrypt- a library used for hashing passwords
 const bcrypt = require("bcrypt");
 
-// Async function to handle updating a user's password
+// Async function that handles updating a user's password
 async function updatePassword(req, res) {
     try {
         // Retrieve the number of salt rounds for hashing from environment variables
@@ -12,7 +12,7 @@ async function updatePassword(req, res) {
 
         // Hash the new password provided in the request body
         const hashedNewPassword = await bcrypt.hash(req.body.newPassword, saltRounds);
-        console.log(hashedNewPassword); // Log the hashed password for debugging
+        console.log(hashedNewPassword); //hashed password logged for debugging
 
         // Update the user's password in the database where the email matches
         const result = await User.update(
@@ -21,16 +21,14 @@ async function updatePassword(req, res) {
         );
         console.log(result); // Log the result of the update operation
 
-        // Send a 200 response indicating the password has been updated
+        //200 response would be sent indicating the password has been updated
         res.status(200).json({
             message: "Password updated",
             results: result
         });
     } catch (error) {
-        // Log any errors that occur during the password update process
+        //console log added incase any errors occur (this will help locate and debug the issue)
         console.log(error);
-
-        // Send a 500 (Internal Server Error) response with an error message
         res.status(500).json({
             message: "Oops, password not updated",
             errorMessage: error
@@ -38,5 +36,5 @@ async function updatePassword(req, res) {
     }
 }
 
-// Export the updatePassword function so it can be used in the router
+// updatePassword exported so that it can be used in the router
 module.exports = updatePassword;

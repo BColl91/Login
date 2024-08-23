@@ -5,7 +5,7 @@ const { Router } = require("express");
 const registerUser = require("../controllers/registerUser");
 
 // Import middleware to hash passwords before saving to the database
-const hashPassword = require("../middleware/hashPasword.js");
+const hashPassword = require("../middleware/hashPassword.js");
 
 // Import the controller that lists all users
 const listUsers = require("../controllers/listUsers");
