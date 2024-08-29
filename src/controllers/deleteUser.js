@@ -15,7 +15,7 @@ async function deleteUser(req, res) {
         console.log(result);
 
         // Send a 200 response indicating that the user has been deleted
-        res.status(200).send(`User ${req.body.email} deleted`);
+        res.status(200).json({message: `User ${req.body.email} deleted`});
     } catch (error) {
         // Log any errors to the console for debugging
         console.log(error);

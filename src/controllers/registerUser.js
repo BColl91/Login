@@ -20,7 +20,7 @@ async function registerUser(req, res) {
         });
 
         // Send a 201 response indicating that the user has been created successfully
-        res.status(201).send(`User ${req.body.username} has been created.`);
+        res.status(201).json({message:`User ${req.body.username} has been created.`});
     } catch (error) {
         // Log any errors to the console for debugging
         console.log(error);

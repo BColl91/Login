@@ -38,14 +38,18 @@ async function checkToken(req, res, next) {
     } catch (error) {
         // Log any errors to the console
         console.log(error);
-
-        // If an error occurs, send a 500 (Internal Server Error) response with a message and the error details
-        res.status(500).json({
-            message: "Token Check Failed",
-            errorMessage: error
+        if (error === "User no longer in database"){
+            res.status(500).json({
+                errorMessage: "User no longer exists!",
+                message: "User no longer exists!"
+        })
+        } else {
+            res.status(500).json({
+                message: "Token Check Failed",
+                errorMessage: error
         });
     }
-}
+}}
 
 // Export the checkToken middleware function so it can be used in routes
 module.exports = checkToken;
