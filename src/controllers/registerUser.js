@@ -18,7 +18,8 @@ async function registerUser(req, res) {
             email: req.body.email,
             password: req.body.password // Assume password is already hashed by middleware
         });
-
+        console.log(user);
+        
         // Send a 201 response indicating that the user has been created successfully
         res.status(201).json({message:`User ${req.body.username} has been created.`});
     } catch (error) {
