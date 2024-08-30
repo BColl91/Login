@@ -2,7 +2,6 @@
 const User = require("../db/models/users");
 // Import bcrypt if password hashing is needed in the future (commented out for now)
 // const bcrypt = require("bcrypt");
-
 // Async function to handle user registration
 async function registerUser(req, res) {
     try {
@@ -20,10 +19,13 @@ async function registerUser(req, res) {
         });
         console.log(user);
         
+        console.log("S U C C E S S F U L");
+        
+
         // Send a 201 response indicating that the user has been created successfully
         res.status(201).json({message:`User ${req.body.username} has been created.`});
     } catch (error) {
-        // Log any errors to the console for debugging
+
         console.log(error);
 
         // Send a 418 (I'm a teapot) response for database errors with an error message
